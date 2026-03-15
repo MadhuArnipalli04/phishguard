@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Result - PhishGuard{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card p-4">
+            <h2 class="text-center mb-4"><i class="fas fa-chart-line"></i> URL Check Result</h2>
+            <div class="text-center">
+                <h5 class="card-title">URL: {{ url }}</h5>
+                <p class="card-text">
+                    {% if result == 'Phishing' %}
+                        <span class="badge bg-danger fs-5 p-3"><i class="fas fa-exclamation-triangle"></i> Phishing Detected</span>
+                    {% else %}
+                        <span class="badge bg-success fs-5 p-3"><i class="fas fa-check-circle"></i> Legitimate</span>
+                    {% endif %}
+                </p>
+                <a href="{{ url_for('check_url') }}" class="btn btn-primary me-2"><i class="fas fa-plus"></i> Check Another URL</a>
+                <a href="{{ url_for('history') }}" class="btn btn-outline-primary"><i class="fas fa-history"></i> View History</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
